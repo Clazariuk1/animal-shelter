@@ -40,8 +40,8 @@ gulp.task('default', (cb) => {
 	 },
 	 serveStatic: ['./public']
 	});
-	// SET UP WATCJERS TO LISTEN TO CHANGES IN FILES
-	gulp.watch(['./src/*','./src/**/*.js','./src/components/**/**/*'], gulp.task('js-watch')).on('change', reload);;
+	// SET UP WATCJERS TO LISTEN TO CHANGES IN FILES // if crash kill pages below.
+	gulp.watch(['./src/*','./src/**/*.js','./src/components/**/**/*', './src/pages/**/**/*'], gulp.task('js-watch')).on('change', reload);	// LISTEN FOR WHEN TO RELOAD PAGES
 	// LISTEN FOR WHEN TO RELOAD PAGES
 	gulp
 		.watch([
@@ -76,4 +76,3 @@ gulp.task('js-watch', gulp.task('webpack'), function (done) {
     reload();
     done();
 });
-
