@@ -6,9 +6,7 @@ const animalSchema = new Schema ({
     name: { type: String, required: true },
     species: { type: String, required: true },
     image: { type: String, required: true },
-    reservedForAdoption: { type: Boolean, required: true, defaultValue: false },
-    age: { type: Number },
-    breed: { type: String }
+    reservedForAdoption: { type: Boolean, required: true, defaultValue: false }
 }, {
     timestamps: true
 })

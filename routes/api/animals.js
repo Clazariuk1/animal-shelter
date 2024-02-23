@@ -7,16 +7,16 @@
 const express = require('express')
 const router = express.Router()
 const animalsCtrl = require('../../controllers/api/animals')
-const userCtrl = require('../../controllers/api/user')
+const userCtrl = require('../../controllers/api/users')
 
-router.get('/', animalsCtrl.indexBlogs, animalsCtrl.jsonAnimals)
+router.get('/', animalsCtrl.indexAnimals, animalsCtrl.jsonAnimals)
 
 router.post('/', userCtrl.auth, animalsCtrl.createAnimal, animalsCtrl.jsonAnimal)
 
 router.get('/:id', animalsCtrl.showAnimal, animalsCtrl.jsonAnimal)
 
-router.put('/:id', userCtrl.auth, blogsCtrl.updateBlog, animalsCtrl.jsonAnimal)
+router.put('/:id', userCtrl.auth, animalsCtrl.updateAnimal, animalsCtrl.jsonAnimal)
 
-router.delete('/:id', userCtrl.auth, blogsCtrl.deleteBlog, animalsCtrl.jsonAnimal)
+router.delete('/:id', userCtrl.auth, animalsCtrl.deleteAnimal, animalsCtrl.jsonAnimal)
 
 module.exports = router

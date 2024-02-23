@@ -14,7 +14,7 @@ const Animal = require('../../models/animal')
 
 const indexAnimals = async ( _ , res, next) => {
     try {
-        const animals = await Animals.find({})
+        const animals = await Animal.find({})
         res.locals.data.animals = animals
         next()
     } catch (error) {
@@ -36,7 +36,6 @@ const createAnimal = async (req, res, next) => {
 
 const showAnimal = async (req, res, next) => {
     try {
-        req.body.user = req.user._id
         const animal = await Animal.findById(req.params.id)
         res.locals.data.animal = animal
         next()
@@ -48,8 +47,9 @@ const showAnimal = async (req, res, next) => {
 
 const updateAnimal = async (req, res, next) => {
     try {
-        const animal = await Animal.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        const animal = await Animal.findByIdAndUpdate({_id: req.params.id, user: req.user._id}, req.body, { new: true })
         res.locals.data.animal = animal
+        next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
     }
@@ -58,7 +58,7 @@ const updateAnimal = async (req, res, next) => {
 
 const deleteAnimal = async (req, res, next) => {
     try {
-        const animal = await Animal.findOneAndDelete({_id : req.params.id,  user: req.user._id})
+        const animal = await Animal.findByIdAndDelete({_id : req.params.id,  user: req.user._id})
         res.locals.data.animal = animal
         next()
     } catch (error) {
