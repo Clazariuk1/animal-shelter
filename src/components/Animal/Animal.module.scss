@@ -1,0 +1,53 @@
+button {
+    background-color: var(--bg-blue);
+    color: var(--text-light);
+    border-radius: .5vmin;
+    margin: 1vmin;
+    font-size: 2vmin;
+    height: 3vmin;
+}
+
+a, a:visited, a:link {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--text-blue);
+}
+
+li {
+    text-decoration: none;
+    list-style: none;
+    background-color: var(--offwhite);
+    border: 1px solid var(--text-blue);
+    box-shadow: 4px 8px 16px var(--text-blue);
+    display: flex;
+    font-size: 1.5vmin;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5vmin;
+}
+
+.animal {
+    border: solid 5px var(--bg-light);
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .button {
+        background-color: var(--bg-blue);
+        text-transform: uppercase;
+        cursor: grab;
+        color: var(--text-light);
+        padding: .25rem 1rem;
+        font-size: 1rem;
+        font-weight: 700;
+        display: inline-block;
+        margin: 1rem;
+        margin-left: 1rem;
+        border: 2px solid black;
+        box-shadow: 0 2px 5px var(--bg-blue);
+    }
+    .link {
+        color: black;
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,24 @@
+.h1{
+    background-color: var(--bg-blue);
+    color: var(--text-light);
+    font-size: 2.5rem;
+    border-radius: 5%;;
+    text-align: center;
+}
+
+.button {
+    background-color: var(--bg-blue);
+    color: var(--text--light);
+    font-size: 2.5rem;
+    min-height: 10rem;
+    border-radius: 5%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.button:hover{
+    background-color: var(--bg-light);
+    color: var(--text-blue);
+    cursor: grab;
+}

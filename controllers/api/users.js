@@ -8,8 +8,9 @@ const auth = async (req, res, next) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '')
         const data = jwt.verify(token, process.env.SECRET)
-        const user = await User.findOne({ _id: data._id })
-        if(!user) throw new Error ('bad credentials')
+        const user = await User.findOne({ _id: payloadFromJWT._id })
+        console.log(token)
+if(!user) throw new Error ('bad credentials')
         req.user = user
         next()
     } catch (error) {
@@ -18,6 +19,27 @@ const auth = async (req, res, next) => {
 }
 
 // router.post('/', userCtrl.createUser)
+
+
+// exports.auth = async (req, res, next) => {
+//     // https://i.imgur.com/3quZxs4.png
+//     // step 5 happens here
+//     try {
+//       const token = req.header('Authorization').replace('Bearer ', '')
+//       const payloadFromJWT = jwt.verify(token, process.env.SECRET)
+//       // https://i.imgur.com/IXByEPP.png image explaining jwt structure
+//       const user = await User.findOne({ _id: payloadFromJWT._id })
+//       if (!user) {
+//         throw new Error()
+//       }
+//       req.user = user
+//       next()
+//     } catch (error) {
+//       res.status(401).send('Not authorized')
+//     }
+//   }
+
+
 
 const createUser = async (req, res, next) => {
     try {
@@ -78,6 +100,6 @@ module.exports = {
     deleteUser
 }
 
-function createJWT(user){
-    return jwt.sign({ user }, process.env.SECRET, { expiresIn: '48h' })
-}
+// function createJWT(user){
+//     return jwt.sign({ user }, process.env.SECRET, { expiresIn: '48h' })
+// }
