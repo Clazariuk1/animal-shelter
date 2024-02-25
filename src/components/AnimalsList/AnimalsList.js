@@ -5,9 +5,14 @@ import { update } from 'immutable'
 export default function AnimalList({
     animals,
     deleteAnimal,
-    updateAnimal
+    updateAnimal,
+    searchInput
 }) {
+
+
     return (
+        searchInput ? null :
+
         <ul>
             {
                 animals.length

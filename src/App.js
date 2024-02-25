@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import Auth from './components/Auth/Auth'
 import CreateAnimal from './components/CreateAnimal/CreateAnimal'
-import AnimalList from './components/AnimalsList/AnimalsList'
+import AnimalsList from './components/AnimalsList/AnimalsList'
 import styles from './App.module.scss'
+import Searchbar from './components/Searchbar/Searchbar'
+import SearchFilter from './components/SearchFilter/SearchFilter'
 
-export default function App () {
+export default function App() {
 
 
   const handleChangeAuth = (event) => {
@@ -152,19 +154,35 @@ export default function App () {
       setToken(JSON.parse(tokenData))
     }
   }, [])
-  return (
-    <>
-    {
-      token?
-      <button onClick={() => {
-        localStorage.removeItem('token')
-        window.location.reload()
-      }}>
-        Logout
-      </button>:
-      ''
+
+
+const [searchInput, setSearchInput] = useState('')
+const handleSearch = (searchInput, animals) => {
+    if(!searchInput) {
+        return <AnimalsList animals={animals} updateAnimal={updateAnimal} deleteAnimal={deleteAnimal} />
+    }
+    return <AnimalsList animals={animals.filter(animal => animal.title.includes(searchInput))} updateAnimal={updateAnimal} deleteAnimal={deleteAnimal} />
     }
 
+
+
+  return (
+    <>
+      {
+        token ?
+          <button onClick={() => {
+            localStorage.removeItem('token')
+            window.location.reload()
+          }}>
+            Logout
+          </button> :
+          ''
+      }
+      <div className="banner">
+        <h1 className="banner">Sunny Animal Adoption Shelter</h1>
+        <h2 className="banner">Brighter Days Ahead For Our Furry Friends</h2>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqtuoc9EQFUFrIEbZovpxdtEWNrmtPb4Ysiw&usqp=CAU" />
+      </div>
       <Auth
         login={login}
         credentials={credentials}
@@ -178,7 +196,14 @@ export default function App () {
         animal={animal}
         handleChange={handleChange}
       />
-      <AnimalList
+
+      <Searchbar
+        animals={animals}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        onKeyDown={handleSearch}
+      />
+      <AnimalsList
         animals={animals}
         deleteAnimal={deleteAnimal}
         updateAnimal={updateAnimal}
@@ -193,10 +218,3 @@ export default function App () {
 // setSearchInput={setSearchInput}
 // onKeyDown={handleSearch}
 // />
-
-// const handleSearch = (searchInput, animals) => {
-//     if(!searchInput) {
-//         return animals
-//     }
-//     return animals.filter(animal => animal.title.includes(searchInput))
-// }

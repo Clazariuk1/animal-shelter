@@ -11,12 +11,12 @@ const userCtrl = require('../../controllers/api/users')
 
 router.get('/', animalsCtrl.indexAnimals, animalsCtrl.jsonAnimals)
 
-router.post('/', userCtrl.auth, animalsCtrl.createAnimal, animalsCtrl.jsonAnimal)
+router.post('/', animalsCtrl.createAnimal, animalsCtrl.jsonAnimal) // user auth not currently preventinng this  from happening 02 23 24.
 
 router.get('/:id', animalsCtrl.showAnimal, animalsCtrl.jsonAnimal)
 
-router.put('/:id', userCtrl.auth, animalsCtrl.updateAnimal, animalsCtrl.jsonAnimal)
+router.put('/:id', animalsCtrl.updateAnimal, animalsCtrl.jsonAnimal)
 
-router.delete('/:id', userCtrl.auth, animalsCtrl.deleteAnimal, animalsCtrl.jsonAnimal)
+router.delete('/:id', animalsCtrl.deleteAnimal, animalsCtrl.jsonAnimal)
 
 module.exports = router

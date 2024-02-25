@@ -24,7 +24,7 @@ const indexAnimals = async ( _ , res, next) => {
 
 const createAnimal = async (req, res, next) => {
     try {
-        req.body.user = req.user._id
+        // req.body.user = req.user._id
         const animal = await Animal.create(req.body)
         res.locals.data.animal = animal
         next()
@@ -47,7 +47,7 @@ const showAnimal = async (req, res, next) => {
 
 const updateAnimal = async (req, res, next) => {
     try {
-        const animal = await Animal.findByIdAndUpdate({_id: req.params.id, user: req.user._id}, req.body, { new: true })
+        const animal = await Animal.findByIdAndUpdate({_id: req.params.id }, req.body, { new: true })
         res.locals.data.animal = animal
         next()
     } catch (error) {
@@ -58,7 +58,7 @@ const updateAnimal = async (req, res, next) => {
 
 const deleteAnimal = async (req, res, next) => {
     try {
-        const animal = await Animal.findByIdAndDelete({_id : req.params.id,  user: req.user._id})
+        const animal = await Animal.findByIdAndDelete({_id : req.params.id })
         res.locals.data.animal = animal
         next()
     } catch (error) {

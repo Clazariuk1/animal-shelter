@@ -16,8 +16,9 @@ export default function CreateAnimal({
                         createAnimal()
                     }}>
                     <div>
-                        <label>Title<input type="text" value={animal.title} name="title" onChange={handleChange} placeholder={'Title'} /></label>
-                        <label>Url<input type="text" value={animal.url} name="url" onChange={handleChange} placeholder={'URL'} /></label>
+                        <label>Name<input type="text" value={animal.name} name="name" onChange={handleChange} placeholder={'Name'} /></label>
+                        <label>Species<input type="text" value={animal.species} name="species" onChange={handleChange} placeholder={'Species'} /></label>
+                        <label>Image Url <input type="text" value={animal.image} name="image" onChange={handleChange} placeholder={'Image Url'} /> </label>
                     </div>
                     <input className={styles.button} type="submit" value="Create Animal" />
                 </form>

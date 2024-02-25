@@ -26,19 +26,31 @@ form {
     align-items: center;
 }
 
+img {
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+}
+
 .banner{
     width: 100%;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    img {
-        width: 50%;
+    text-align: center;
+    .img {
+        width: 50vw;
         max-height: 300px;
     }
     h1 {
         width: 100%;
         text-align: center;
         color: rgba(23,5, 58, 0.8);
+        background-color: whitesmoke;
+    }
+    .h2 {
+        background-color: whitesmoke;
     }
 }

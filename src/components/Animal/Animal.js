@@ -6,11 +6,17 @@ export default function Animal({
     deleteAnimal
 }) {
     const [showInput, setShowInput] = useState(false)
+    const [showBody, setShowBody] = useState(false)
     const inputRef = useRef(null)
     return (
         <>
-            <li>
-                <h4 onClick={() => setShowInput(!showInput)}>{animal.name}</h4>
+            <li onClick={() => setShowInput(!showInput)}>
+            <div className="animal__data">
+                <h4>{animal.name}</h4>
+                <h4>{animal.species}</h4>
+                <img src={animal.image} />
+            </div>
+            {/* <h4 onClick={() => setShowInput(!showInput)}>{animal.reservedForAdoption}</h4> */}
                 <input
                     ref={inputRef}
                     style={{ display: showInput ? 'block' : 'none' }}
@@ -24,8 +30,6 @@ export default function Animal({
                     }}
                     defaultValue={animal.name}
                 />
-                <a href={animal.url}
-                target="_blank" rel="noreferrer">{animal.url}</a>
                 <button
                 onClick={() => deleteAnimal(animal._id)}>
                     Found a New Home
