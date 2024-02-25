@@ -228,10 +228,6 @@ function App() {
     searchInput: searchInput,
     setSearchInput: setSearchInput,
     onKeyDown: handleSearch
-  }), /*#__PURE__*/React.createElement(_components_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    animals: animals,
-    deleteAnimal: deleteAnimal,
-    updateAnimal: updateAnimal
   }));
 }
 
@@ -446,8 +442,11 @@ function Auth(_ref) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ CreateAnimal)
 /* harmony export */ });
-/* harmony import */ var _CreateAnimal_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateAnimal.module.scss */ "./src/components/CreateAnimal/CreateAnimal.module.scss");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _CreateAnimal_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateAnimal.module.scss */ "./src/components/CreateAnimal/CreateAnimal.module.scss");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
 
 function CreateAnimal(_ref) {
   let {
@@ -455,10 +454,30 @@ function CreateAnimal(_ref) {
     animal,
     handleChange
   } = _ref;
+  // const [ formData, setFormData ] = useState({
+  //     name: '',
+  //     species: '',
+  //     image: ''
+  // })
+
+  // const handleSubmit = async (e) => {
+  //     e.preventDefault()
+  //     try {
+  //         await createAnimal(formData)
+  //         // cool thing to do once there is a showpage done
+  //     } catch (error) {
+  //         console.error(error)
+  //     }
+  // }
+
+  // const handleChange = (e) => {
+  //     setFormData({...formData, [e.target.name]: e.target.value })
+  // }
+
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Contribute an Animal to the Adoption Community"), /*#__PURE__*/React.createElement("div", {
-    className: _CreateAnimal_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].container
+    className: _CreateAnimal_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container
   }, /*#__PURE__*/React.createElement("form", {
-    className: _CreateAnimal_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].form,
+    className: _CreateAnimal_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].form,
     onSubmit: e => {
       e.preventDefault();
       createAnimal();
@@ -482,7 +501,7 @@ function CreateAnimal(_ref) {
     onChange: handleChange,
     placeholder: 'Image Url'
   }), " ")), /*#__PURE__*/React.createElement("input", {
-    className: _CreateAnimal_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].button,
+    className: _CreateAnimal_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].button,
     type: "submit",
     value: "Create Animal"
   }))));
@@ -595,23 +614,6 @@ function SearchFilter(_ref) {
 
 
 // MUST FINALIZE SEARCH COMPONENT BY INVESTIGATING HOW TO CORRECTLY ACCESS THE REAL BOOKMARKS
-// const testAnimals = [{
-//         title: "kevin",
-//         url: "isaChode",
-//     },
-//     {
-//         title: "cormack",
-//         url: "macarthy",
-//     },
-//     {
-//         title: "bobby",
-//         url: "bouche",
-//     },
-//     {
-//         title: "Ally",
-//         url: "Aron",
-//     },
-// ]
 
 // const searchResults = (searchInput, animals) => {
 //     if(!searchInput) {
@@ -622,17 +624,25 @@ function SearchFilter(_ref) {
 
 function Searchbar(_ref) {
   let {
+    updateAnimal,
+    deleteAnimal,
     animals
   } = _ref;
   const [searchInput, setSearchInput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  // const filteredAnimals = searchResults(searchInput, animals)
   return /*#__PURE__*/React.createElement("div", {
     className: "search__bar"
   }, /*#__PURE__*/React.createElement("label", null, "Search animals here", /*#__PURE__*/React.createElement("input", {
     type: "text",
     placeholder: "Search...",
     onChange: e => setSearchInput(e.target.value)
-  })));
+  })), !searchInput ? /*#__PURE__*/React.createElement(_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    animals: animals,
+    updateAnimal: updateAnimal
+  }) : /*#__PURE__*/React.createElement(_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    animals: animals.filter(animal => animal.name.includes(searchInput)),
+    uodateAnimal: updateAnimal,
+    deleteAnimal: deleteAnimal
+  }));
 }
 
 // how do I specify where the search result will display? Need functioning search bar at top of bookmarks index only.
@@ -1614,4 +1624,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.8010d0776dfa29c065feb7c353d9ff28.js.map
+//# sourceMappingURL=App.0c2401db2c85a8d9187d7c8bfef1039b.js.map

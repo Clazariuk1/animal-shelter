@@ -1,3 +1,5 @@
+import {useState} from 'react'
+
 import styles from './CreateAnimal.module.scss'
 
 export default function CreateAnimal({
@@ -5,11 +7,33 @@ export default function CreateAnimal({
     animal,
     handleChange
 }) {
+    // const [ formData, setFormData ] = useState({
+    //     name: '',
+    //     species: '',
+    //     image: ''
+    // })
+
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault()
+    //     try {
+    //         await createAnimal(formData)
+    //         // cool thing to do once there is a showpage done
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+    // }
+
+    // const handleChange = (e) => {
+    //     setFormData({...formData, [e.target.name]: e.target.value })
+    // }
+
+
     return (
         <>
             <h2>Contribute an Animal to the Adoption Community</h2>
             <div className={styles.container}>
-                <form
+            <form
                     className={styles.form}
                     onSubmit={(e) => {
                         e.preventDefault()

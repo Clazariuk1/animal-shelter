@@ -3,23 +3,6 @@ import styles from './Searchbar.module.scss'
 import Animal from '../Animal/Animal'
 import AnimalsList from '../AnimalsList/AnimalsList'
 // MUST FINALIZE SEARCH COMPONENT BY INVESTIGATING HOW TO CORRECTLY ACCESS THE REAL BOOKMARKS
-// const testAnimals = [{
-//         title: "kevin",
-//         url: "isaChode",
-//     },
-//     {
-//         title: "cormack",
-//         url: "macarthy",
-//     },
-//     {
-//         title: "bobby",
-//         url: "bouche",
-//     },
-//     {
-//         title: "Ally",
-//         url: "Aron",
-//     },
-// ]
 
 // const searchResults = (searchInput, animals) => {
 //     if(!searchInput) {
@@ -29,11 +12,12 @@ import AnimalsList from '../AnimalsList/AnimalsList'
 // }
 
 export default function Searchbar({
+    updateAnimal,
+    deleteAnimal,
 
     animals
 }) {
     const [searchInput, setSearchInput] = useState(false)
-    // const filteredAnimals = searchResults(searchInput, animals)
     return (
         <div className="search__bar">
             <label>Search animals here
@@ -42,6 +26,12 @@ export default function Searchbar({
                 placeholder="Search..."
                 onChange={e => setSearchInput(e.target.value)}
             /></label>
+            {
+                !searchInput ? <AnimalsList animals={animals} updateAnimal={updateAnimal} />
+                :
+                <AnimalsList animals={animals.filter(animal => animal.name.includes(searchInput))} uodateAnimal={updateAnimal} deleteAnimal={deleteAnimal} />
+
+            }
             {/* <ul>
                 {filteredAnimals.map((animal, index) => (
                     <li key={index}>{animal.name}</li>

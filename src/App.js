@@ -202,11 +202,11 @@ export default function App() {
         setSearchInput={setSearchInput}
         onKeyDown={handleSearch}
       />
-      <AnimalsList
+      {/* <AnimalsList
         animals={animals}
         deleteAnimal={deleteAnimal}
         updateAnimal={updateAnimal}
-      />
+      /> */}
     </>
   )
 }
