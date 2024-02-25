@@ -118,6 +118,7 @@ function App() {
     } finally {
       setAnimal({
         name: '',
+        species: '',
         image: ''
       });
     }
@@ -188,15 +189,12 @@ function App() {
   }, []);
   const [searchInput, setSearchInput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const handleSearch = (searchInput, animals) => {
-    if (!searchInput) {
-      return /*#__PURE__*/React.createElement(_components_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        animals: animals,
-        updateAnimal: updateAnimal,
-        deleteAnimal: deleteAnimal
-      });
-    }
-    return /*#__PURE__*/React.createElement(_components_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      animals: animals.filter(animal => animal.title.includes(searchInput)),
+    searchInput ? /*#__PURE__*/React.createElement(_components_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      animals: animals.filter(animal => animal.name.includes(searchInput)),
+      updateAnimal: updateAnimal,
+      deleteAnimal: deleteAnimal
+    }) : /*#__PURE__*/React.createElement(_components_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      animals: animals,
       updateAnimal: updateAnimal,
       deleteAnimal: deleteAnimal
     });
@@ -237,13 +235,6 @@ function App() {
   }));
 }
 
-// <SearchBar
-// animalss={animals}
-// searchInput={searchInput}
-// setSearchInput={setSearchInput}
-// onKeyDown={handleSearch}
-// />
-
 /***/ }),
 
 /***/ "./src/components/Animal/Animal.js":
@@ -270,9 +261,9 @@ function Animal(_ref) {
   const [showInput, setShowInput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [showBody, setShowBody] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const inputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("li", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h4", {
     onClick: () => setShowInput(!showInput)
-  }, /*#__PURE__*/React.createElement("div", {
+  }, "Edit Animal, Click Here"), /*#__PURE__*/React.createElement("div", {
     className: "animal__data"
   }, /*#__PURE__*/React.createElement("h4", null, animal.name), /*#__PURE__*/React.createElement("h4", null, animal.species), /*#__PURE__*/React.createElement("img", {
     src: animal.image
@@ -292,6 +283,38 @@ function Animal(_ref) {
       }
     },
     defaultValue: animal.name
+  }), /*#__PURE__*/React.createElement("input", {
+    ref: inputRef,
+    style: {
+      display: showInput ? 'block' : 'none'
+    },
+    type: "text",
+    onKeyDown: e => {
+      if (e.key === 'Enter') {
+        const species = inputRef.current.value;
+        updateAnimal(animal._id, {
+          species
+        });
+        setShowInput(false);
+      }
+    },
+    defaultValue: animal.species
+  }), /*#__PURE__*/React.createElement("input", {
+    ref: inputRef,
+    style: {
+      display: showInput ? 'block' : 'none'
+    },
+    type: "text",
+    onKeyDown: e => {
+      if (e.key === 'Enter') {
+        const image = inputRef.current.value;
+        updateAnimal(animal._id, {
+          image
+        });
+        setShowInput(false);
+      }
+    },
+    defaultValue: animal.image
   }), /*#__PURE__*/React.createElement("button", {
     onClick: () => deleteAnimal(animal._id)
   }, "Found a New Home")));
@@ -592,7 +615,7 @@ function SearchFilter(_ref) {
 
 // const searchResults = (searchInput, animals) => {
 //     if(!searchInput) {
-//         return <AnimalsList animals={animals} updateAnimal={updateAnimal}
+//         return <AnimalsList animals={animals} updateAnimal={updateAnimal} />
 //     }
 //     return animals.filter(animal => animal.name.includes(searchInput))
 // }
@@ -1591,4 +1614,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.cd1b2a4d7ef449beff2d03cf8b248c7f.js.map
+//# sourceMappingURL=App.8010d0776dfa29c065feb7c353d9ff28.js.map

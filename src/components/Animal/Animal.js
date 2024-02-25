@@ -10,14 +10,15 @@ export default function Animal({
     const inputRef = useRef(null)
     return (
         <>
-            <li onClick={() => setShowInput(!showInput)}>
+            <li>
+                <h4 onClick={() => setShowInput(!showInput)}>Edit Animal, Click Here</h4>
             <div className="animal__data">
                 <h4>{animal.name}</h4>
                 <h4>{animal.species}</h4>
                 <img src={animal.image} />
             </div>
             {/* <h4 onClick={() => setShowInput(!showInput)}>{animal.reservedForAdoption}</h4> */}
-                <input
+            <input
                     ref={inputRef}
                     style={{ display: showInput ? 'block' : 'none' }}
                     type="text"
@@ -30,6 +31,31 @@ export default function Animal({
                     }}
                     defaultValue={animal.name}
                 />
+                <input
+                ref={inputRef}
+                style={{ display: showInput ? 'block' : 'none' }}
+                type="text"
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        const species = inputRef.current.value
+                        updateAnimal(animal._id, { species })
+                        setShowInput(false)
+                    }
+                }}
+                defaultValue={animal.species}
+            /><input
+            ref={inputRef}
+            style={{ display: showInput ? 'block' : 'none' }}
+            type="text"
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                    const image = inputRef.current.value
+                    updateAnimal(animal._id, { image })
+                    setShowInput(false)
+                }
+            }}
+            defaultValue={animal.image}
+        />
                 <button
                 onClick={() => deleteAnimal(animal._id)}>
                     Found a New Home

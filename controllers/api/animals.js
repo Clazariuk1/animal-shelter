@@ -27,6 +27,7 @@ const createAnimal = async (req, res, next) => {
         // req.body.user = req.user._id
         const animal = await Animal.create(req.body)
         res.locals.data.animal = animal
+        console.log(animal)
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })

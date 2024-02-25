@@ -23,7 +23,7 @@ import AnimalsList from '../AnimalsList/AnimalsList'
 
 // const searchResults = (searchInput, animals) => {
 //     if(!searchInput) {
-//         return <AnimalsList animals={animals} updateAnimal={updateAnimal}
+//         return <AnimalsList animals={animals} updateAnimal={updateAnimal} />
 //     }
 //     return animals.filter(animal => animal.name.includes(searchInput))
 // }

@@ -84,6 +84,7 @@ export default function App() {
     } finally {
       setAnimal({
         name: '',
+        species: '',
         image: ''
       })
     }
@@ -156,14 +157,12 @@ export default function App() {
   }, [])
 
 
-const [searchInput, setSearchInput] = useState('')
-const handleSearch = (searchInput, animals) => {
-    if(!searchInput) {
-        return <AnimalsList animals={animals} updateAnimal={updateAnimal} deleteAnimal={deleteAnimal} />
-    }
-    return <AnimalsList animals={animals.filter(animal => animal.title.includes(searchInput))} updateAnimal={updateAnimal} deleteAnimal={deleteAnimal} />
-    }
-
+  const [searchInput, setSearchInput] = useState('')
+  const handleSearch = (searchInput, animals) => {
+    searchInput ? <AnimalsList animals={animals.filter(animal => animal.name.includes(searchInput))} updateAnimal={updateAnimal} deleteAnimal={deleteAnimal} />
+      :
+      <AnimalsList animals={animals} updateAnimal={updateAnimal} deleteAnimal={deleteAnimal} />
+  }
 
 
   return (
@@ -211,10 +210,3 @@ const handleSearch = (searchInput, animals) => {
     </>
   )
 }
-
-// <SearchBar
-// animalss={animals}
-// searchInput={searchInput}
-// setSearchInput={setSearchInput}
-// onKeyDown={handleSearch}
-// />
