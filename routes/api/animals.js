@@ -11,7 +11,7 @@ const userCtrl = require('../../controllers/api/users')
 
 router.get('/', animalsCtrl.indexAnimals, animalsCtrl.jsonAnimals)
 
-router.post('/', animalsCtrl.createAnimal, animalsCtrl.jsonAnimal) // user auth not currently preventinng this  from happening 02 23 24.
+router.post('/', userCtrl.auth, animalsCtrl.createAnimal, animalsCtrl.jsonAnimal) // user auth not currently preventinng this  from happening 02 23 24.
 
 router.get('/:id', animalsCtrl.showAnimal, animalsCtrl.jsonAnimal)
 

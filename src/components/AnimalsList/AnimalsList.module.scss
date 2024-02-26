@@ -1,4 +1,4 @@
-.animalList {
+.box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +7,7 @@
     color: var(--text-black);
     background-color: var(--bg-light);
     border-radius: 5%;
-    border: 1px solid var(--text-black);
+    border: 10px solid var(--text-black);
     padding: 20px;
     margin: 20px;
     box-shadow: 2px 4px 8px var(--bg-blue);
@@ -21,5 +21,9 @@
         align-items: right;
         justify-content: right;
         text-align: right;
+    }
+    div .image {
+        margin: 4rem;
+        border: solid 10px red;
     }
 }

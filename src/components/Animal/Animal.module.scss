@@ -1,10 +1,19 @@
 button {
-    background-color: var(--bg-blue);
-    color: var(--text-light);
-    border-radius: .5vmin;
+    background-color: var(--offwhite);
+    color: var(--text-blue);
+    border-radius: .5rem;
     margin: 1vmin;
     font-size: 2vmin;
-    height: 3vmin;
+    height: 15vmin;
+    width: fit-content;
+    box-shadow: 2px 3px 4px var(--text-blue)
+}
+
+button:hover {
+    background-color: var(--bg-blue);
+    color: var(--text-light);
+    cursor: grab;
+    box-shadow: none;
 }
 
 a, a:visited, a:link {
@@ -13,17 +22,39 @@ a, a:visited, a:link {
     color: var(--text-blue);
 }
 
+.playing__field {
+    display: flex;
+    justify-content: space-between;
+    background-color: yellow;
+}
+
 li {
     text-decoration: none;
     list-style: none;
     background-color: var(--offwhite);
     border: 1px solid var(--text-blue);
     box-shadow: 4px 8px 16px var(--text-blue);
+    margin: 3rem;
     display: flex;
     font-size: 1.5vmin;
     align-items: center;
     justify-content: space-between;
     padding: 1.5vmin;
+
+    input {
+        box-shadow: 2px 2px 4px black;
+        margin-right: .5rem;
+        border-radius: .5rem;
+    }
+}
+
+
+.animal__data {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .animal {
@@ -50,4 +81,20 @@ li {
         color: black;
         padding: 1rem;
     }
+
+    h4 {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: yellow;
+    }
+
+}
+
+.image {
+    box-shadow: 2px 4px 4px black;
+    padding: 1rem;
+    width: 100%;
+    margin: 1rem;
+    border: solid 5px red;
 }

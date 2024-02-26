@@ -7,6 +7,16 @@
     --text-black: #161616;
 }
 
+h1 {
+    color: var(--offwhite);
+    background-color: red;
+    border-radius: 5%;
+    width: fit-content;
+    padding: 5rem;
+    text-align: center;
+    justify-content: center;
+}
+
 body {
     margin: 0;
     padding: 1vw;
@@ -15,7 +25,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--bg-dark);
+    text-align: center;
+    background: linear-gradient(to left top, purple, yellow);
     color: var(--text-black);
 }
 

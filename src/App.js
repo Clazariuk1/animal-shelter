@@ -67,6 +67,7 @@ export default function App() {
       window.location.reload()
     }
   }
+
   const createAnimal = async () => {
     try {
       const response = await fetch('/api/animals', {
@@ -89,6 +90,7 @@ export default function App() {
       })
     }
   }
+
   const listAnimals = async () => {
     try {
       const response = await fetch('/api/animals', {
@@ -196,17 +198,19 @@ export default function App() {
         handleChange={handleChange}
       />
 
-      <Searchbar
+      {/* <Searchbar
         animals={animals}
         searchInput={searchInput}
         setSearchInput={setSearchInput}
         onKeyDown={handleSearch}
-      />
-      {/* <AnimalsList
+        updateAnimal={updateAnimal}
+        deleteAnimal={deleteAnimal}
+      /> */}
+      <AnimalsList
         animals={animals}
         deleteAnimal={deleteAnimal}
         updateAnimal={updateAnimal}
-      /> */}
+      />
     </>
   )
 }

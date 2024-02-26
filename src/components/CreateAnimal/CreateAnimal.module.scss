@@ -5,11 +5,7 @@
     gap: 1.25vmin;
     color: var(--text-black);
     min-height: 8min;
-        label{
-            font-size: 2vmin;
-            display: flex;
-            align-items: center;
-        }
+
         div {
             display: flex;
             justify-content: space-around;
@@ -19,6 +15,8 @@
             padding: 1vmin;
             font-size: 2vmin;
             border: .1vmin solid var(--bg-light);
+            margin: 1rem;
+            border-radius: .5rem;
         }
         .button {
             margin: 1vmin;
@@ -26,14 +24,24 @@
             color: var(--offwhite);
             background-color: var(--text-blue);
             min-height: 4rem;
+            border-radius: 1rem;
+            box-shadow: 2px 2px 4px black;
+        }
+
+        .button:hover {
+            background-color: var(--text-light);
+            color: var(--text-blue);
+            box-shadow: none;
         }
 }
 
 h2 {
     text-align: center;
     color: var(--text-blue);
-    background-color: var(--bg-light);
+    background-color: var(--off-white);
     font-size: 2rem;
+    border-radius: 5%;
+    box-shadow: 1px 2px 3px var(--bg-blue);
 }
 
 .container {

@@ -1,5 +1,23 @@
-.sign__up__form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+// .sign__up__form {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     gap: 1rem;
+//     padding: 2rem;
+
+// }
+
+input {
+    margin: 2rem;
+    padding: 1rem;
+    background-color: black;
+    color: black;
+}
+
+button {
+    background-color: black;
+}
+
+submit {
+    background-color: black;
 }

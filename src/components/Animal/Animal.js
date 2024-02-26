@@ -11,11 +11,15 @@ export default function Animal({
     return (
         <>
             <li>
-                <h4 onClick={() => setShowInput(!showInput)}>Edit Animal, Click Here</h4>
+                <div className="playing__field">
+                <button onClick={() => setShowInput(!showInput)}>Edit Animal, Click Here</button>
+                </div>
             <div className="animal__data">
-                <h4>{animal.name}</h4>
-                <h4>{animal.species}</h4>
+                <h4 className="text">{animal.name}</h4>
+                <h4 className="text">{animal.species}</h4>
+                <div className="image">
                 <img src={animal.image} />
+                </div>
             </div>
             {/* <h4 onClick={() => setShowInput(!showInput)}>{animal.reservedForAdoption}</h4> */}
             <input

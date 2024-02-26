@@ -223,11 +223,10 @@ function App() {
     createAnimal: createAnimal,
     animal: animal,
     handleChange: handleChange
-  }), /*#__PURE__*/React.createElement(_components_Searchbar_Searchbar__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }), /*#__PURE__*/React.createElement(_components_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
     animals: animals,
-    searchInput: searchInput,
-    setSearchInput: setSearchInput,
-    onKeyDown: handleSearch
+    deleteAnimal: deleteAnimal,
+    updateAnimal: updateAnimal
   }));
 }
 
@@ -257,13 +256,21 @@ function Animal(_ref) {
   const [showInput, setShowInput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [showBody, setShowBody] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const inputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h4", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("div", {
+    className: "playing__field"
+  }, /*#__PURE__*/React.createElement("button", {
     onClick: () => setShowInput(!showInput)
-  }, "Edit Animal, Click Here"), /*#__PURE__*/React.createElement("div", {
+  }, "Edit Animal, Click Here")), /*#__PURE__*/React.createElement("div", {
     className: "animal__data"
-  }, /*#__PURE__*/React.createElement("h4", null, animal.name), /*#__PURE__*/React.createElement("h4", null, animal.species), /*#__PURE__*/React.createElement("img", {
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "text"
+  }, animal.name), /*#__PURE__*/React.createElement("h4", {
+    className: "text"
+  }, animal.species), /*#__PURE__*/React.createElement("div", {
+    className: "image"
+  }, /*#__PURE__*/React.createElement("img", {
     src: animal.image
-  })), /*#__PURE__*/React.createElement("input", {
+  }))), /*#__PURE__*/React.createElement("input", {
     ref: inputRef,
     style: {
       display: showInput ? 'block' : 'none'
@@ -344,7 +351,9 @@ function AnimalList(_ref) {
     updateAnimal,
     searchInput
   } = _ref;
-  return searchInput ? null : /*#__PURE__*/React.createElement("ul", null, animals.length ? animals.map(animal => /*#__PURE__*/React.createElement(_Animal_Animal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return searchInput ? null : /*#__PURE__*/React.createElement("ul", {
+    className: "box"
+  }, animals.length ? animals.map(animal => /*#__PURE__*/React.createElement(_Animal_Animal__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: animal._id,
     animal: animal,
     updateAnimal: updateAnimal,
@@ -416,7 +425,7 @@ function Auth(_ref) {
   return /*#__PURE__*/React.createElement(React.Fragment, null, user && user.name ? /*#__PURE__*/React.createElement("h1", {
     className: _Auth_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].h1
   }, "Welcome ", user.name.toUpperCase()) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
-    className: _Auth_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].button,
+    className: "auth__button",
     onClick: () => {
       setShowSignUp(!showSignUp);
     }
@@ -482,25 +491,25 @@ function CreateAnimal(_ref) {
       e.preventDefault();
       createAnimal();
     }
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", null, "Name", /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", {
     type: "text",
     value: animal.name,
     name: "name",
     onChange: handleChange,
     placeholder: 'Name'
-  })), /*#__PURE__*/React.createElement("label", null, "Species", /*#__PURE__*/React.createElement("input", {
+  }), /*#__PURE__*/React.createElement("input", {
     type: "text",
     value: animal.species,
     name: "species",
     onChange: handleChange,
     placeholder: 'Species'
-  })), /*#__PURE__*/React.createElement("label", null, "Image Url ", /*#__PURE__*/React.createElement("input", {
+  }), /*#__PURE__*/React.createElement("input", {
     type: "text",
     value: animal.image,
     name: "image",
     onChange: handleChange,
     placeholder: 'Image Url'
-  }), " ")), /*#__PURE__*/React.createElement("input", {
+  })), /*#__PURE__*/React.createElement("input", {
     className: _CreateAnimal_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].button,
     type: "submit",
     value: "Create Animal"
@@ -640,7 +649,7 @@ function Searchbar(_ref) {
     updateAnimal: updateAnimal
   }) : /*#__PURE__*/React.createElement(_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
     animals: animals.filter(animal => animal.name.includes(searchInput)),
-    uodateAnimal: updateAnimal,
+    updateAnimal: updateAnimal,
     deleteAnimal: deleteAnimal
   }));
 }
@@ -803,6 +812,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `:root {
   --text-black: #161616;
 }
 
+h1 {
+  color: var(--offwhite);
+  background-color: red;
+  border-radius: 5%;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5rem;
+  text-align: center;
+  justify-content: center;
+}
+
 body {
   margin: 0;
   padding: 1vw;
@@ -811,7 +831,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--bg-dark);
+  text-align: center;
+  background: linear-gradient(to left top, purple, yellow);
   color: var(--text-black);
 }
 
@@ -849,7 +870,7 @@ img {
 }
 .KTmxx2sH00E53HXHCND1 .TtztygEzHlox4F5H2Le9 {
   background-color: whitesmoke;
-}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,sBAAA;EACA,0BAAA;EACA,8BAAA;EACA,8BAAA;EACA,gCAAA;EACA,qBAAA;AACJ;;AAEA;EACI,SAAA;EACA,YAAA;EACA,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,gCAAA;EACA,wBAAA;AACJ;;AAEA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AACJ;;AAEA;EACI,uBAAA;EACA,mBAAA;EACA,UAAA;AACJ;;AAEA;EACI,WAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;EACA,kBAAA;AACJ;AAAI;EACI,WAAA;EACA,iBAAA;AAER;AAAI;EACI,WAAA;EACA,kBAAA;EACA,2BAAA;EACA,4BAAA;AAER;AAAI;EACI,4BAAA;AAER","sourcesContent":[":root{\n    --offwhite: whitesmoke;\n    --bg-blue: rgb(90, 7, 242);\n    --bg-light: rgb(127, 105, 114);\n    --text-blue: rgb(181, 49, 196);\n    --text-light: rgb(177, 168, 206);\n    --text-black: #161616;\n}\n\nbody {\n    margin: 0;\n    padding: 1vw;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    background-color: var(--bg-dark);\n    color: var(--text-black);\n}\n\nform {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\nimg {\n    justify-content: center;\n    align-items: center;\n    width: 25%;\n}\n\n.banner{\n    width: 100%;\n    color: black;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    text-align: center;\n    .img {\n        width: 50vw;\n        max-height: 300px;\n    }\n    h1 {\n        width: 100%;\n        text-align: center;\n        color: rgba(23,5, 58, 0.8);\n        background-color: whitesmoke;\n    }\n    .h2 {\n        background-color: whitesmoke;\n    }\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,sBAAA;EACA,0BAAA;EACA,8BAAA;EACA,8BAAA;EACA,gCAAA;EACA,qBAAA;AACJ;;AAEA;EACI,sBAAA;EACA,qBAAA;EACA,iBAAA;EACA,uBAAA;EACA,kBAAA;EACA,aAAA;EACA,kBAAA;EACA,uBAAA;AACJ;;AAEA;EACI,SAAA;EACA,YAAA;EACA,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;EACA,wDAAA;EACA,wBAAA;AACJ;;AAEA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AACJ;;AAEA;EACI,uBAAA;EACA,mBAAA;EACA,UAAA;AACJ;;AAEA;EACI,WAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;EACA,kBAAA;AACJ;AAAI;EACI,WAAA;EACA,iBAAA;AAER;AAAI;EACI,WAAA;EACA,kBAAA;EACA,2BAAA;EACA,4BAAA;AAER;AAAI;EACI,4BAAA;AAER","sourcesContent":[":root{\n    --offwhite: whitesmoke;\n    --bg-blue: rgb(90, 7, 242);\n    --bg-light: rgb(127, 105, 114);\n    --text-blue: rgb(181, 49, 196);\n    --text-light: rgb(177, 168, 206);\n    --text-black: #161616;\n}\n\nh1 {\n    color: var(--offwhite);\n    background-color: red;\n    border-radius: 5%;\n    width: -moz-fit-content;\n    width: fit-content;\n    padding: 5rem;\n    text-align: center;\n    justify-content: center;\n}\n\nbody {\n    margin: 0;\n    padding: 1vw;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    text-align: center;\n    background: linear-gradient(to left top, purple, yellow);\n    color: var(--text-black);\n}\n\nform {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\nimg {\n    justify-content: center;\n    align-items: center;\n    width: 25%;\n}\n\n.banner{\n    width: 100%;\n    color: black;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    text-align: center;\n    .img {\n        width: 50vw;\n        max-height: 300px;\n    }\n    h1 {\n        width: 100%;\n        text-align: center;\n        color: rgba(23,5, 58, 0.8);\n        background-color: whitesmoke;\n    }\n    .h2 {\n        background-color: whitesmoke;\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"banner": `KTmxx2sH00E53HXHCND1`,
@@ -880,12 +901,22 @@ ___CSS_LOADER_EXPORT___.locals = {
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `button {
-  background-color: var(--bg-blue);
-  color: var(--text-light);
-  border-radius: 0.5vmin;
+  background-color: var(--offwhite);
+  color: var(--text-blue);
+  border-radius: 0.5rem;
   margin: 1vmin;
   font-size: 2vmin;
-  height: 3vmin;
+  height: 15vmin;
+  width: -moz-fit-content;
+  width: fit-content;
+  box-shadow: 2px 3px 4px var(--text-blue);
+}
+
+button:hover {
+  background-color: var(--bg-blue);
+  color: var(--text-light);
+  cursor: grab;
+  box-shadow: none;
 }
 
 a, a:visited, a:link {
@@ -894,17 +925,37 @@ a, a:visited, a:link {
   color: var(--text-blue);
 }
 
+.jZfhZcr2SPgb8BuITL1M {
+  display: flex;
+  justify-content: space-between;
+  background-color: yellow;
+}
+
 li {
   text-decoration: none;
   list-style: none;
   background-color: var(--offwhite);
   border: 1px solid var(--text-blue);
   box-shadow: 4px 8px 16px var(--text-blue);
+  margin: 3rem;
   display: flex;
   font-size: 1.5vmin;
   align-items: center;
   justify-content: space-between;
   padding: 1.5vmin;
+}
+li input {
+  box-shadow: 2px 2px 4px black;
+  margin-right: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.TyzgAaol0rZCW9I6QLWK {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .OmFmBVBjQGDKgfgnRdGt {
@@ -931,12 +982,29 @@ li {
 .OmFmBVBjQGDKgfgnRdGt .c9tMfQWhdAxbEc0oNUYK {
   color: black;
   padding: 1rem;
-}`, "",{"version":3,"sources":["webpack://./src/components/Animal/Animal.module.scss"],"names":[],"mappings":"AAAA;EACI,gCAAA;EACA,wBAAA;EACA,sBAAA;EACA,aAAA;EACA,gBAAA;EACA,aAAA;AACJ;;AAEA;EACI,qBAAA;EACA,eAAA;EACA,uBAAA;AACJ;;AAEA;EACI,qBAAA;EACA,gBAAA;EACA,iCAAA;EACA,kCAAA;EACA,yCAAA;EACA,aAAA;EACA,kBAAA;EACA,mBAAA;EACA,8BAAA;EACA,gBAAA;AACJ;;AAEA;EACI,iCAAA;EACA,iBAAA;EACA,mBAAA;EACA,uBAAA;EACA,WAAA;AACJ;AAAI;EACI,gCAAA;EACA,yBAAA;EACA,YAAA;EACA,wBAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,YAAA;EACA,iBAAA;EACA,uBAAA;EACA,oCAAA;AAER;AAAI;EACI,YAAA;EACA,aAAA;AAER","sourcesContent":["button {\n    background-color: var(--bg-blue);\n    color: var(--text-light);\n    border-radius: .5vmin;\n    margin: 1vmin;\n    font-size: 2vmin;\n    height: 3vmin;\n}\n\na, a:visited, a:link {\n    text-decoration: none;\n    cursor: pointer;\n    color: var(--text-blue);\n}\n\nli {\n    text-decoration: none;\n    list-style: none;\n    background-color: var(--offwhite);\n    border: 1px solid var(--text-blue);\n    box-shadow: 4px 8px 16px var(--text-blue);\n    display: flex;\n    font-size: 1.5vmin;\n    align-items: center;\n    justify-content: space-between;\n    padding: 1.5vmin;\n}\n\n.animal {\n    border: solid 5px var(--bg-light);\n    font-size: 1.5rem;\n    align-items: center;\n    justify-content: center;\n    width: 100%;\n    .button {\n        background-color: var(--bg-blue);\n        text-transform: uppercase;\n        cursor: grab;\n        color: var(--text-light);\n        padding: .25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin: 1rem;\n        margin-left: 1rem;\n        border: 2px solid black;\n        box-shadow: 0 2px 5px var(--bg-blue);\n    }\n    .link {\n        color: black;\n        padding: 1rem;\n    }\n}\n"],"sourceRoot":""}]);
+}
+.OmFmBVBjQGDKgfgnRdGt h4 {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: yellow;
+}
+
+.PWLmKBR8p_cSQuYPYrfA {
+  box-shadow: 2px 4px 4px black;
+  padding: 1rem;
+  width: 100%;
+  margin: 1rem;
+  border: solid 5px red;
+}`, "",{"version":3,"sources":["webpack://./src/components/Animal/Animal.module.scss"],"names":[],"mappings":"AAAA;EACI,iCAAA;EACA,uBAAA;EACA,qBAAA;EACA,aAAA;EACA,gBAAA;EACA,cAAA;EACA,uBAAA;EACA,kBAAA;EACA,wCAAA;AACJ;;AAEA;EACI,gCAAA;EACA,wBAAA;EACA,YAAA;EACA,gBAAA;AACJ;;AAEA;EACI,qBAAA;EACA,eAAA;EACA,uBAAA;AACJ;;AAEA;EACI,aAAA;EACA,8BAAA;EACA,wBAAA;AACJ;;AAEA;EACI,qBAAA;EACA,gBAAA;EACA,iCAAA;EACA,kCAAA;EACA,yCAAA;EACA,YAAA;EACA,aAAA;EACA,kBAAA;EACA,mBAAA;EACA,8BAAA;EACA,gBAAA;AACJ;AACI;EACI,6BAAA;EACA,oBAAA;EACA,qBAAA;AACR;;AAIA;EACI,aAAA;EACA,mBAAA;EACA,kBAAA;EACA,uBAAA;EACA,mBAAA;AADJ;;AAIA;EACI,iCAAA;EACA,iBAAA;EACA,mBAAA;EACA,uBAAA;EACA,WAAA;AADJ;AAEI;EACI,gCAAA;EACA,yBAAA;EACA,YAAA;EACA,wBAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,YAAA;EACA,iBAAA;EACA,uBAAA;EACA,oCAAA;AAAR;AAEI;EACI,YAAA;EACA,aAAA;AAAR;AAGI;EACI,mBAAA;EACA,uBAAA;EACA,kBAAA;EACA,aAAA;AADR;;AAMA;EACI,6BAAA;EACA,aAAA;EACA,WAAA;EACA,YAAA;EACA,qBAAA;AAHJ","sourcesContent":["button {\n    background-color: var(--offwhite);\n    color: var(--text-blue);\n    border-radius: .5rem;\n    margin: 1vmin;\n    font-size: 2vmin;\n    height: 15vmin;\n    width: -moz-fit-content;\n    width: fit-content;\n    box-shadow: 2px 3px 4px var(--text-blue)\n}\n\nbutton:hover {\n    background-color: var(--bg-blue);\n    color: var(--text-light);\n    cursor: grab;\n    box-shadow: none;\n}\n\na, a:visited, a:link {\n    text-decoration: none;\n    cursor: pointer;\n    color: var(--text-blue);\n}\n\n.playing__field {\n    display: flex;\n    justify-content: space-between;\n    background-color: yellow;\n}\n\nli {\n    text-decoration: none;\n    list-style: none;\n    background-color: var(--offwhite);\n    border: 1px solid var(--text-blue);\n    box-shadow: 4px 8px 16px var(--text-blue);\n    margin: 3rem;\n    display: flex;\n    font-size: 1.5vmin;\n    align-items: center;\n    justify-content: space-between;\n    padding: 1.5vmin;\n\n    input {\n        box-shadow: 2px 2px 4px black;\n        margin-right: .5rem;\n        border-radius: .5rem;\n    }\n}\n\n\n.animal__data {\n    display: flex;\n    flex-direction: row;\n    text-align: center;\n    justify-content: center;\n    align-items: center;\n}\n\n.animal {\n    border: solid 5px var(--bg-light);\n    font-size: 1.5rem;\n    align-items: center;\n    justify-content: center;\n    width: 100%;\n    .button {\n        background-color: var(--bg-blue);\n        text-transform: uppercase;\n        cursor: grab;\n        color: var(--text-light);\n        padding: .25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin: 1rem;\n        margin-left: 1rem;\n        border: 2px solid black;\n        box-shadow: 0 2px 5px var(--bg-blue);\n    }\n    .link {\n        color: black;\n        padding: 1rem;\n    }\n\n    h4 {\n        align-items: center;\n        justify-content: center;\n        text-align: center;\n        color: yellow;\n    }\n\n}\n\n.image {\n    box-shadow: 2px 4px 4px black;\n    padding: 1rem;\n    width: 100%;\n    margin: 1rem;\n    border: solid 5px red;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
+	"playing__field": `jZfhZcr2SPgb8BuITL1M`,
+	"animal__data": `TyzgAaol0rZCW9I6QLWK`,
 	"animal": `OmFmBVBjQGDKgfgnRdGt`,
 	"button": `oLDiJlg0yBuKGjThTM9L`,
-	"link": `c9tMfQWhdAxbEc0oNUYK`
+	"link": `c9tMfQWhdAxbEc0oNUYK`,
+	"image": `PWLmKBR8p_cSQuYPYrfA`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -961,7 +1029,7 @@ ___CSS_LOADER_EXPORT___.locals = {
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.sgoFJuZD52mJH_e183yU {
+___CSS_LOADER_EXPORT___.push([module.id, `.ZtEtRcocy0tzhWUC8aDt {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -970,12 +1038,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.sgoFJuZD52mJH_e183yU {
   color: var(--text-black);
   background-color: var(--bg-light);
   border-radius: 5%;
-  border: 1px solid var(--text-black);
+  border: 10px solid var(--text-black);
   padding: 20px;
   margin: 20px;
   box-shadow: 2px 4px 8px var(--bg-blue);
 }
-.sgoFJuZD52mJH_e183yU .dUfwJcpiqlvUFGTJM5bf {
+.ZtEtRcocy0tzhWUC8aDt .dUfwJcpiqlvUFGTJM5bf {
   color: var(--text-blue);
   display: inline-block;
   font-size: 2.5rem;
@@ -985,11 +1053,16 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.sgoFJuZD52mJH_e183yU {
   align-items: right;
   justify-content: right;
   text-align: right;
-}`, "",{"version":3,"sources":["webpack://./src/components/AnimalsList/AnimalsList.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,wBAAA;EACA,iCAAA;EACA,iBAAA;EACA,mCAAA;EACA,aAAA;EACA,YAAA;EACA,sCAAA;AACJ;AAAI;EACI,uBAAA;EACA,qBAAA;EACA,iBAAA;EACA,YAAA;EACA,SAAA;EACA,iCAAA;EACA,kBAAA;EACA,sBAAA;EACA,iBAAA;AAER","sourcesContent":[".animalList {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: var(--text-black);\n    background-color: var(--bg-light);\n    border-radius: 5%;\n    border: 1px solid var(--text-black);\n    padding: 20px;\n    margin: 20px;\n    box-shadow: 2px 4px 8px var(--bg-blue);\n    .input {\n        color: var(--text-blue);\n        display: inline-block;\n        font-size: 2.5rem;\n        margin: 3rem;\n        border: 0;\n        background-color: var(--offwhite);\n        align-items: right;\n        justify-content: right;\n        text-align: right;\n    }\n}\n"],"sourceRoot":""}]);
+}
+.ZtEtRcocy0tzhWUC8aDt div .HW0rgPnRmA7c9yq6y9dr {
+  margin: 4rem;
+  border: solid 10px red;
+}`, "",{"version":3,"sources":["webpack://./src/components/AnimalsList/AnimalsList.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,wBAAA;EACA,iCAAA;EACA,iBAAA;EACA,oCAAA;EACA,aAAA;EACA,YAAA;EACA,sCAAA;AACJ;AAAI;EACI,uBAAA;EACA,qBAAA;EACA,iBAAA;EACA,YAAA;EACA,SAAA;EACA,iCAAA;EACA,kBAAA;EACA,sBAAA;EACA,iBAAA;AAER;AAAI;EACI,YAAA;EACA,sBAAA;AAER","sourcesContent":[".box {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: var(--text-black);\n    background-color: var(--bg-light);\n    border-radius: 5%;\n    border: 10px solid var(--text-black);\n    padding: 20px;\n    margin: 20px;\n    box-shadow: 2px 4px 8px var(--bg-blue);\n    .input {\n        color: var(--text-blue);\n        display: inline-block;\n        font-size: 2.5rem;\n        margin: 3rem;\n        border: 0;\n        background-color: var(--offwhite);\n        align-items: right;\n        justify-content: right;\n        text-align: right;\n    }\n    div .image {\n        margin: 4rem;\n        border: solid 10px red;\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"animalList": `sgoFJuZD52mJH_e183yU`,
-	"input": `dUfwJcpiqlvUFGTJM5bf`
+	"box": `ZtEtRcocy0tzhWUC8aDt`,
+	"input": `dUfwJcpiqlvUFGTJM5bf`,
+	"image": `HW0rgPnRmA7c9yq6y9dr`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1025,7 +1098,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.UhNDaS6ukZ19AIax4ZjN {
 .teRb0vp2dOtwO_9DnYOs {
   background-color: var(--bg-blue);
   color: var(--text--light);
-  font-size: 2.5rem;
+  font-size: 5rem;
   min-height: 10rem;
   border-radius: 5%;
   text-align: center;
@@ -1037,7 +1110,16 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.UhNDaS6ukZ19AIax4ZjN {
   background-color: var(--bg-light);
   color: var(--text-blue);
   cursor: grab;
-}`, "",{"version":3,"sources":["webpack://./src/components/Auth/Auth.module.scss"],"names":[],"mappings":"AAAA;EACI,gCAAA;EACA,wBAAA;EACA,iBAAA;EACA,iBAAA;EACA,kBAAA;AACJ;;AAEA;EACI,gCAAA;EACA,yBAAA;EACA,iBAAA;EACA,iBAAA;EACA,iBAAA;EACA,kBAAA;EACA,cAAA;EACA,cAAA;AACJ;;AAEA;EACI,iCAAA;EACA,uBAAA;EACA,YAAA;AACJ","sourcesContent":[".h1{\n    background-color: var(--bg-blue);\n    color: var(--text-light);\n    font-size: 2.5rem;\n    border-radius: 5%;;\n    text-align: center;\n}\n\n.button {\n    background-color: var(--bg-blue);\n    color: var(--text--light);\n    font-size: 2.5rem;\n    min-height: 10rem;\n    border-radius: 5%;\n    text-align: center;\n    display: block;\n    margin: 0 auto;\n}\n\n.button:hover{\n    background-color: var(--bg-light);\n    color: var(--text-blue);\n    cursor: grab;\n}\n"],"sourceRoot":""}]);
+}
+
+input {
+  margin: 0.5rem;
+  font-size: 2.5rem;
+  padding: 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 5rem;
+}`, "",{"version":3,"sources":["webpack://./src/components/Auth/Auth.module.scss"],"names":[],"mappings":"AAAA;EACI,gCAAA;EACA,wBAAA;EACA,iBAAA;EACA,iBAAA;EACA,kBAAA;AACJ;;AAEA;EACI,gCAAA;EACA,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,iBAAA;EACA,kBAAA;EACA,cAAA;EACA,cAAA;AACJ;;AAEA;EACI,iCAAA;EACA,uBAAA;EACA,YAAA;AACJ;;AAGA;EACI,cAAA;EACA,iBAAA;EACA,aAAA;EACA,uBAAA;EACA,YAAA;EACA,mBAAA;AAAJ","sourcesContent":[".h1{\n    background-color: var(--bg-blue);\n    color: var(--text-light);\n    font-size: 2.5rem;\n    border-radius: 5%;;\n    text-align: center;\n}\n\n.button {\n    background-color: var(--bg-blue);\n    color: var(--text--light);\n    font-size: 5rem;\n    min-height: 10rem;\n    border-radius: 5%;\n    text-align: center;\n    display: block;\n    margin: 0 auto;\n}\n\n.button:hover{\n    background-color: var(--bg-light);\n    color: var(--text-blue);\n    cursor: grab;\n}\n\n\ninput {\n    margin: .5rem;\n    font-size: 2.5rem;\n    padding: 1rem;\n    background-color: black;\n    color: white;\n    border-radius: 5rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"h1": `UhNDaS6ukZ19AIax4ZjN`,
@@ -1074,11 +1156,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.bWI9uGavqU5iJ7bi5G5e {
   color: var(--text-black);
   min-height: 8min;
 }
-.bWI9uGavqU5iJ7bi5G5e label {
-  font-size: 2vmin;
-  display: flex;
-  align-items: center;
-}
 .bWI9uGavqU5iJ7bi5G5e div {
   display: flex;
   justify-content: space-around;
@@ -1088,6 +1165,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.bWI9uGavqU5iJ7bi5G5e {
   padding: 1vmin;
   font-size: 2vmin;
   border: 0.1vmin solid var(--bg-light);
+  margin: 1rem;
+  border-radius: 0.5rem;
 }
 .bWI9uGavqU5iJ7bi5G5e .jQHtI3dvxZc96QRBrmVP {
   margin: 1vmin;
@@ -1095,13 +1174,22 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.bWI9uGavqU5iJ7bi5G5e {
   color: var(--offwhite);
   background-color: var(--text-blue);
   min-height: 4rem;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 4px black;
+}
+.bWI9uGavqU5iJ7bi5G5e .jQHtI3dvxZc96QRBrmVP:hover {
+  background-color: var(--text-light);
+  color: var(--text-blue);
+  box-shadow: none;
 }
 
 h2 {
   text-align: center;
   color: var(--text-blue);
-  background-color: var(--bg-light);
+  background-color: var(--off-white);
   font-size: 2rem;
+  border-radius: 5%;
+  box-shadow: 1px 2px 3px var(--bg-blue);
 }
 
 .CkbgmcMZF15DNKpQgYMX {
@@ -1109,7 +1197,7 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}`, "",{"version":3,"sources":["webpack://./src/components/CreateAnimal/CreateAnimal.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,aAAA;EACA,8BAAA;EACA,aAAA;EACA,wBAAA;EACA,gBAAA;AACJ;AAAQ;EACI,gBAAA;EACA,aAAA;EACA,mBAAA;AAEZ;AAAQ;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;AAEZ;AAAQ;EACI,cAAA;EACA,gBAAA;EACA,qCAAA;AAEZ;AAAQ;EACI,aAAA;EACA,cAAA;EACA,sBAAA;EACA,kCAAA;EACA,gBAAA;AAEZ;;AAEA;EACI,kBAAA;EACA,uBAAA;EACA,iCAAA;EACA,eAAA;AACJ;;AAEA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AACJ","sourcesContent":[".form {\n    align-self: center;\n    display: grid;\n    grid-template-columns: 1fr 2fr;\n    gap: 1.25vmin;\n    color: var(--text-black);\n    min-height: 8min;\n        label{\n            font-size: 2vmin;\n            display: flex;\n            align-items: center;\n        }\n        div {\n            display: flex;\n            justify-content: space-around;\n            align-items: center;\n        }\n        input {\n            padding: 1vmin;\n            font-size: 2vmin;\n            border: .1vmin solid var(--bg-light);\n        }\n        .button {\n            margin: 1vmin;\n            padding: 1vmin;\n            color: var(--offwhite);\n            background-color: var(--text-blue);\n            min-height: 4rem;\n        }\n}\n\nh2 {\n    text-align: center;\n    color: var(--text-blue);\n    background-color: var(--bg-light);\n    font-size: 2rem;\n}\n\n.container {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/CreateAnimal/CreateAnimal.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,aAAA;EACA,8BAAA;EACA,aAAA;EACA,wBAAA;EACA,gBAAA;AACJ;AACQ;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;AACZ;AACQ;EACI,cAAA;EACA,gBAAA;EACA,qCAAA;EACA,YAAA;EACA,qBAAA;AACZ;AACQ;EACI,aAAA;EACA,cAAA;EACA,sBAAA;EACA,kCAAA;EACA,gBAAA;EACA,mBAAA;EACA,6BAAA;AACZ;AAEQ;EACI,mCAAA;EACA,uBAAA;EACA,gBAAA;AAAZ;;AAIA;EACI,kBAAA;EACA,uBAAA;EACA,kCAAA;EACA,eAAA;EACA,iBAAA;EACA,sCAAA;AADJ;;AAIA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AADJ","sourcesContent":[".form {\n    align-self: center;\n    display: grid;\n    grid-template-columns: 1fr 2fr;\n    gap: 1.25vmin;\n    color: var(--text-black);\n    min-height: 8min;\n\n        div {\n            display: flex;\n            justify-content: space-around;\n            align-items: center;\n        }\n        input {\n            padding: 1vmin;\n            font-size: 2vmin;\n            border: .1vmin solid var(--bg-light);\n            margin: 1rem;\n            border-radius: .5rem;\n        }\n        .button {\n            margin: 1vmin;\n            padding: 1vmin;\n            color: var(--offwhite);\n            background-color: var(--text-blue);\n            min-height: 4rem;\n            border-radius: 1rem;\n            box-shadow: 2px 2px 4px black;\n        }\n\n        .button:hover {\n            background-color: var(--text-light);\n            color: var(--text-blue);\n            box-shadow: none;\n        }\n}\n\nh2 {\n    text-align: center;\n    color: var(--text-blue);\n    background-color: var(--off-white);\n    font-size: 2rem;\n    border-radius: 5%;\n    box-shadow: 1px 2px 3px var(--bg-blue);\n}\n\n.container {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"form": `bWI9uGavqU5iJ7bi5G5e`,
@@ -1624,4 +1712,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.0c2401db2c85a8d9187d7c8bfef1039b.js.map
+//# sourceMappingURL=App.b70613fb5fb96e28ec114598a83a1abe.js.map

@@ -14,7 +14,6 @@ import AnimalsList from '../AnimalsList/AnimalsList'
 export default function Searchbar({
     updateAnimal,
     deleteAnimal,
-
     animals
 }) {
     const [searchInput, setSearchInput] = useState(false)
@@ -29,7 +28,7 @@ export default function Searchbar({
             {
                 !searchInput ? <AnimalsList animals={animals} updateAnimal={updateAnimal} />
                 :
-                <AnimalsList animals={animals.filter(animal => animal.name.includes(searchInput))} uodateAnimal={updateAnimal} deleteAnimal={deleteAnimal} />
+                <AnimalsList animals={animals.filter(animal => animal.name.includes(searchInput))} updateAnimal={updateAnimal} deleteAnimal={deleteAnimal} />
 
             }
             {/* <ul>

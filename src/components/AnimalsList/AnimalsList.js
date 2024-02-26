@@ -13,7 +13,7 @@ export default function AnimalList({
     return (
         searchInput ? null :
 
-        <ul>
+        <ul className="box">
             {
                 animals.length
                     ? animals.map(animal => (

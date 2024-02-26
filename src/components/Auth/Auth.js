@@ -49,7 +49,7 @@ export default function Auth({
                     <h1 className={styles.h1}>Welcome {user.name.toUpperCase()}</h1> :
                     <>
                         <button
-                            className={styles.button}
+                            className="auth__button"
                             onClick={() => {
                                 setShowSignUp(!showSignUp)
                             }}
