@@ -24,7 +24,6 @@ export default function App() {
     name: '',
     species: '',
     image: '',
-    reservedForAdoption: { type: Boolean, required: true, defaultValue: false }
   }, {
     timestamps: true
   })
@@ -41,12 +40,10 @@ export default function App() {
         body: JSON.stringify({ email: credentials.email, password: credentials.password })
       })
       const tokenResponse = await response.json()
-      setToken(tokenResponse)
-      localStorage.setItem('token', JSON.stringify(tokenResponse))
+      setToken(tokenResponse.token)
+      localStorage.setItem('token', JSON.stringify(tokenResponse.token))
     } catch (error) {
       console.error(error)
-    } finally {
-      window.location.reload()
     }
   }
   const signUp = async () => {
@@ -59,12 +56,10 @@ export default function App() {
         body: JSON.stringify({ ...credentials })
       })
       const tokenResponse = await response.json()
-      setToken(tokenResponse)
-      localStorage.setItem('token', JSON.stringify(tokenResponse))
+      setToken(tokenResponse.token)
+      localStorage.setItem('token', JSON.stringify(tokenResponse.token))
     } catch (error) {
       console.error(error)
-    } finally {
-      window.location.reload()
     }
   }
 
@@ -198,14 +193,14 @@ export default function App() {
         handleChange={handleChange}
       />
 
-      {/* <Searchbar
+      <Searchbar
         animals={animals}
         searchInput={searchInput}
         setSearchInput={setSearchInput}
         onKeyDown={handleSearch}
         updateAnimal={updateAnimal}
         deleteAnimal={deleteAnimal}
-      /> */}
+      />
       <AnimalsList
         animals={animals}
         deleteAnimal={deleteAnimal}

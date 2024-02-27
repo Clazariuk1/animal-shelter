@@ -51,12 +51,7 @@ function App() {
   const [animal, setAnimal] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     name: '',
     species: '',
-    image: '',
-    reservedForAdoption: {
-      type: Boolean,
-      required: true,
-      defaultValue: false
-    }
+    image: ''
   }, {
     timestamps: true
   });
@@ -75,12 +70,10 @@ function App() {
         })
       });
       const tokenResponse = await response.json();
-      setToken(tokenResponse);
-      localStorage.setItem('token', JSON.stringify(tokenResponse));
+      setToken(tokenResponse.token);
+      localStorage.setItem('token', JSON.stringify(tokenResponse.token));
     } catch (error) {
       console.error(error);
-    } finally {
-      window.location.reload();
     }
   };
   const signUp = async () => {
@@ -93,12 +86,10 @@ function App() {
         body: JSON.stringify(_objectSpread({}, credentials))
       });
       const tokenResponse = await response.json();
-      setToken(tokenResponse);
-      localStorage.setItem('token', JSON.stringify(tokenResponse));
+      setToken(tokenResponse.token);
+      localStorage.setItem('token', JSON.stringify(tokenResponse.token));
     } catch (error) {
       console.error(error);
-    } finally {
-      window.location.reload();
     }
   };
   const createAnimal = async () => {
@@ -223,6 +214,13 @@ function App() {
     createAnimal: createAnimal,
     animal: animal,
     handleChange: handleChange
+  }), /*#__PURE__*/React.createElement(_components_Searchbar_Searchbar__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    animals: animals,
+    searchInput: searchInput,
+    setSearchInput: setSearchInput,
+    onKeyDown: handleSearch,
+    updateAnimal: updateAnimal,
+    deleteAnimal: deleteAnimal
   }), /*#__PURE__*/React.createElement(_components_AnimalsList_AnimalsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
     animals: animals,
     deleteAnimal: deleteAnimal,
@@ -745,13 +743,13 @@ function SignUp(_ref) {
     value: credentials.name,
     name: "name",
     onChange: handleChangeAuth,
-    placeholder: "Email"
+    placeholder: "Name"
   }), /*#__PURE__*/React.createElement("input", {
     type: "text",
     value: credentials.email,
     name: "email",
     onChange: handleChangeAuth,
-    placeholder: "Name"
+    placeholder: "Email"
   }), /*#__PURE__*/React.createElement("input", {
     type: "text",
     value: credentials.password,
@@ -1712,4 +1710,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.b70613fb5fb96e28ec114598a83a1abe.js.map
+//# sourceMappingURL=App.40f6b8012abaa9aec7673dcd7f8b4d41.js.map

@@ -8,7 +8,7 @@ const auth = async (req, res, next) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '')
         const data = jwt.verify(token, process.env.SECRET)
-        const user = await User.findOne({ _id: payloadFromJWT._id })
+        const user = await User.findOne({ _id: data._id })
         console.log(token)
 if(!user) throw new Error ('bad credentials')
         req.user = user
